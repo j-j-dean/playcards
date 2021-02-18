@@ -48,15 +48,15 @@ game boards do not display any changes until a player's turn is complete by sele
 13. Complete - this action completes a player's turn, updates all players game boards, and
 sets the active player to the next player.
 ## Scoring
-The scoring occurs at the completion of each hand.  This application does not currently
+The scoring occurs at the completion of each hand.  This application is not currently
 perform the scoring.  The scoring is kept by a designated score keeper as follows:
 1. Jokers - 500 points
 2. Aces - 100 points
 3. Wild Cards - 100 points
 4. Face Cards (J, Q, K) and Numbered cards: 10 (only) - 10 points
-5. Numbered cards: 2 thru 9 - 5 points
+5. Numbered cards: 2 thru 9 - 5 points<br><br>
 A player adds up all the points using the above scoring for all the cards they have
-played to the game board (highlighted cards) and subtract the points using the above
+played to the game board (highlighted cards) and subtracts the points using the above
 scoring for any cards remaining in their hand
 ## Winning the Game
 At the start of the game the players decide on a score to reach (ie. 1000 points).  The
