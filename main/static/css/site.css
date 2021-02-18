@@ -1,0 +1,376 @@
+* {margin: 0; padding: 0;}
+
+body {
+  background: #00a651;
+}
+
+.myradio label {
+  color: #383838;
+}
+
+.myradio {
+  float: left;
+}
+
+#radio-div {
+  position: relative;
+  margin-left: 37%;
+}
+
+#player_menu ul {
+  background: white;
+  position: absolute;
+}
+
+label {
+  font: 2em Georgia, Times New Roman, serif;
+  margin-left: 1em;
+  color: black;
+}
+
+.skip-2-below {
+  margin-bottom: 2vw;
+}
+
+.skip-2-above {
+  margin-top: 2vw;
+}
+
+#status_msg {
+  font-size: 2.5vw;
+  color: black;
+}
+
+.navbar-custom {
+   color: white;
+   background: #9932cc;
+}
+
+.navbar-brand {
+    font-size: 1.2em;
+}
+
+input[type="text"], input[type="number"], input[type="submit"] {
+  font: 1.2em Georgia, Times New Roman, serif;
+  border-radius: 5px;
+  margin-left: 1em;
+}
+
+input[type="submit"] {
+  padding: 0.2em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: 45%;
+}
+
+#draw_pile_button {
+  font-size: 1em;
+  margin: 4px 10px;
+}
+
+#draw_discard_button {
+  font-size: 1em;
+  margin: 4px 2px;
+}
+
+.card {
+  position: absolute;
+}
+
+.card, .game_board_card, .draw_pile_card, .discard_pile_card  {
+  /*top: 300px;
+  left: 300px;*/
+  margin-right: 10px;
+  width: 5em; /* width of playing card */
+  height: 7.5em; /* height of playing card */
+  border: 1px solid black;
+  border-radius: 10px;
+  background: #fff;
+  -webkit-box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
+  box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
+}
+
+.draw_pile_card {
+    position: relative;
+    word-wrap: break-word;
+    background: #cb4154;
+    padding: 5px;
+    margin: 0;
+    letter-spacing: 0;
+    line-height: 0.9;
+    color: yellow;
+}
+
+.players_card, .discard_pile_card, .game_board_card {
+  position: relative;
+  margin-right: 10px;
+  width: 5em; /* width of playing card */
+  height: 7.5em; /* height of playing card */
+  border: 1px solid black;
+  border-radius: 10px;
+  background: #fff;
+  -webkit-box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
+  box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
+}
+
+.players_card.discard {
+  border: 5px solid purple;
+}
+
+.players_card.meld_card, .my_played_card {
+  border: 5px solid blue;
+}
+
+.card-selected .card_value {
+  background-color: yellow;
+}
+
+.discard_pile_card, .game_board_card {
+  margin-right: 5px;
+}
+
+.card p, .players_card p, .discard_pile_card p, .game_board_card p {
+  text-align: center;
+  font: 2em/3.5em Georgia, Times New Roman, serif; /* Size of Letter or Number in center of card*/
+}
+
+.discard_pile_card {
+  float: left;
+}
+
+.small_players_card {
+  position: relative;
+  margin-right: 5px;
+  width: 1.9em; /* width of playing card */
+  height: 2.5em; /* height of playing card */
+  border: 1px solid black;
+  border-radius: 5px;
+  background: #fff;
+  -webkit-box-shadow: 1.5px 1.5px 3.5px rgba(0,0,0,0.3);
+  box-shadow: 1.5px 1.5px 3.5px rgba(0,0,0,0.3);
+}
+
+.small_players_card p {
+  text-align: center;
+  font: 1em/1.75em Georgia, Times New Roman, serif;
+}
+
+div[class*='suit']:before {
+  position: absolute;
+  font-size: 1em; /* size of letter or number and suit in corner of card*/
+  left: 0.3em;
+  top: 1em;
+}
+
+.card_value:before {
+  position: absolute;
+  font-size: 0.5em;
+  left: 0.3em;
+  top: -2.7em;
+  content: attr(card_value);
+}
+
+.card_value:after {
+  position: absolute;
+  font-size: 0.5em;
+  right:0.3em;
+  bottom: -2.8em;
+  content: attr(card_value);
+}
+
+.suitdiamonds:before, .suitdiamonds:after {
+  content: "♦";
+}
+
+.suithearts:before, .suithearts:after {
+  content: "♥";
+}
+
+.suithearts {
+  color: #ff0000;
+}
+
+.suitdiamonds {
+  color: blue;
+}
+
+.suitclubs:before, .suitclubs:after {
+  content: "♣";
+}
+
+.suitspades:before, .suitspades:after {
+  content: "♠";//attr(cardandsuit);//"♠"
+}
+
+.suitclubs {
+  color: #000;
+}
+
+.suitclubs {
+  color: green;
+}
+
+.suitjoker:before, .suitjoker:after {
+  content: 'Joker?';
+  color: #ff0000;
+}
+
+.suitjoker:before {
+  transform: rotate(90deg);
+  right: 3.5em;
+  bottom: 6em;
+}
+.suitjoker:after {
+  transform: rotate(-90deg);
+  left: 3.5em;
+  top: 6em;
+}
+
+.players_card.suitspades, .players_card.suithearts, .players_card.suitclubs,
+.players_card.suitdiamonds, .players_card.suitjoker {
+  float: left;
+}
+
+div[class*='suit']:after {
+  position: absolute;
+  font-size: 1em; /* size of letter or number and suit in corner or card */
+  right: 0.3em;
+  bottom: 0.8em;
+}
+
+#deal_button, #draw_pile_button, #draw_discard_button, #discard_button, #undue_button, #complete_button,
+#play_run_button, #play_book_button, #play_add_before_button, #play_add_after_button {
+  font: Times;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  /*margin: 4px 2px;*/
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+#deal_button, #draw_pile_button, #draw_discard_button, #discard_button, #undue_button, #complete_button,
+#play_run_button, #play_book_button, #play_add_before_button, #play_add_after_button {
+  background-color: blue;
+ }
+
+ #deal_button {
+   margin-left: 30px;
+ }
+
+.player_card_count {
+  background-color: #9932cc;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  margin-right: 8px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.game_board_meld_div {
+    border: 1px solid black;
+    overflow: hidden;
+}
+
+.game_board_meld_type {
+  float: left;
+  position: relative;
+}
+
+#main_welcome {
+  margin-top: 10vw;
+}
+
+#all-hearts, #all-hearts-small {
+  position: relative;
+  width: 50%;
+  margin: auto;
+}
+#all-hearts-small {
+  height: 100px;
+}
+
+#main_card_rotate_1, #main_card_rotate_2, #main_card_rotate_3, #main_card_rotate_4, #main_card_rotate_5 {
+  position: absolute;
+  height: 100px;
+  width: 70px;
+}
+
+#main_card_rotate_1{
+  position: absolute;
+  top: 14vw;
+  left: 3vw;
+  height: 100px;
+  width: 70px;
+  transform: rotate(-20deg) scale(2.0);
+}
+
+#main_card_rotate_2 {
+  top: 12vw;
+  left: 11vw;
+  transform: rotate(-10deg) scale(2.0);
+}
+
+#main_card_rotate_3 {
+  top: 11vw;
+  left: 20vw;
+  transform: scale(2.0);
+}
+
+#main_card_rotate_4 {
+  top: 12vw;
+  left: 29vw;
+  transform: rotate(10deg) scale(2.0);
+}
+
+#main_card_rotate_5 {
+  top: 14vw;
+  left: 38vw;
+  transform: rotate(16deg) scale(2.0);
+}
+
+#rotate_1, #rotate_2, #rotate_3, #rotate_4, #rotate_5 {
+  position: absolute;
+  height: 50px;
+  width: 35px;
+}
+
+#rotate_1 {
+  top: 1vw;
+  left: 15vw;
+  transform: rotate(-20deg) scale(0.75);
+}
+
+#rotate_2 {
+  top: 0vw;
+  left: 18vw;
+  transform: rotate(-10deg) scale(0.75);
+}
+
+#rotate_3 {
+  top: -0.5vw;
+  left: 21.5vw;
+  transform: scale(0.75)
+}
+
+#rotate_4 {
+  top: -0.5vw;
+  left: 25vw;
+  transform: rotate(10deg) scale(0.75);
+}
+
+#rotate_5 {
+  top: 0.3vw;
+  left: 28.5vw;
+  transform: rotate(20deg) scale(0.75);
+}
