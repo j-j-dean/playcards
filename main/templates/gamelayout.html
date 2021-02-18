@@ -1,0 +1,109 @@
+{% load static %}
+
+<html>
+<head>
+    <title>Play Blitz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="{% static 'css/site.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{% static 'js/site.js' %}"></script>
+</head>
+<body>
+<nav>
+    <div id="user_name" hidden>{{ user_name }}</div>
+    <div id="game_id" hidden>{{ game_id }}</div>
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Let's Play!</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#" id="status_msg">{{ status_msg }}</a></li>
+            <li><a id="dealer" href="#">Dealer: {{ dealer }} </a></li>
+            <li><a href="#">User: {{ user_name}}</a></li>
+            <li><a href="#">Game ID: {{ game_id}}</a></li>
+            <li><a href="/exit/{{ game_id }}/{{ user_name }}">Exit Game</a></li>
+        </ul>
+    </div>\
+</nav>
+
+
+
+<br>
+
+<div class="row">
+    <div class="col s12 m2 l2">
+        <ul id="selection-menu" class="collapsible" style="background: white;">
+            <li>
+                <div class="collapsible-header teal lighten-2">Selections:</div>
+            </li>
+            <li>
+                <div id="deal-selection-header" class="collapsible-header"><i class="material-icons">shuffle</i>Deal</div>
+                <div class="collapsible-body">
+                    <p>Shuffle and deal cards to game players.</p>
+                    <br>
+                    <a href="/deal/{{ game_id }}/{{ user_name}}" id="deal_button">GO</a>
+                </div>
+            </li>
+            <li>
+                <div id="draw-selection-header" class="collapsible-header"><i class="material-icons">arrow_upward</i>Draw</div>
+                <div id="draw-selection-body" class="collapsible-body">
+                    <center>One card from</center>
+                    <button id="draw_pile_button" class="center">DRAW PILE</button>
+                    <center>or</center>
+                    <button id="draw_discard_button">DISCARD PILE</button>
+                </div>
+            </li>
+            <li>
+                <div id="play-new-selection-header" class="collapsible-header"><i class="material-icons">play_arrow</i>Play-New</div>
+                <div id="play-new-selection-body" class="collapsible-body">
+                    <center>Select cards from your hand to play</center>
+                    <button id="play_run_button">PLAY AS RUN</button>
+                    <center>or</center>
+                    <button id="play_book_button">PLAY AS BOOK</button>
+                </div>
+            </li>
+            <li>
+                <div id="play-add-selection-header" class="collapsible-header"><i class="material-icons">play_arrow</i>Play-Add</div>
+                <div id="play-add-selection-body" class="collapsible-body">
+                    <center>
+                        <p>Select cards from your hand and select area on game board to play cards then click</p>
+                        <button id="play_add_before_button">BEFORE</button>
+                        <p>or</p>
+                        <button id="play_add_after_button">AFTER</button>
+                        <p>to place the cards</p>
+                    </center>
+                </div>
+            </li>
+            <li>
+                <div id="discard-selection-header" class="collapsible-header"><i class="material-icons">arrow_downward</i>Discard</div>
+                <div id="discard-selection-body" class="collapsible-body">
+                    <span>Select a card to discard then click</span>
+                    <button id="discard_button">DISCARD</button>
+                </div>
+            </li>
+            <li>
+                <div id="undue-header" class="collapsible-header"> <i class="material-icons">history</i>Undue</div>
+                <div id="undue-body" class="collapsible-body">
+                    <span>To start this turn over click</span>
+                    <button id="undue_button">UNDUE</button>
+                </div>
+            </li>
+            <li>
+                <div id="turn-complete-header" class="collapsible-header"><i class="material-icons">done</i>Complete</div>
+                <div id="turn-complete-body" class="collapsible-body">
+                    <span>To complete your turn click</span>
+                    {% csrf_token %}
+                    <button id="complete_button">COMPLETE</button>
+                 </div>
+            </li>
+        </ul>
+    </div>
+
+{% block content %}
+
+{% endblock %}
+
+    <script>M.AutoInit();</script>
+</body>
+</html>

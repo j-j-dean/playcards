@@ -1,0 +1,42 @@
+{% extends "main/templates/gamelayout.html" %}
+
+{% block content %}
+
+{% for player in player_list %}
+
+    <h2>{{ player.name }}</h2>
+
+    <div>
+        {% for card in player.cards %}
+            {% if card.suit == 'spades' %}
+                <p style="float:left;">{{ card.faceval }}♠--</p>
+            {% elif card.suit == 'hearts' %}
+                <p style="float:left; color:red;">{{ card.faceval }}♥--</p>
+            {% elif card.suit == 'diamonds' %}
+                <p style="float:left; color: red;">{{ card.faceval }}♦--</p>
+            {% elif card.suit == 'clubs' %}
+                <p style="float:left;">{{ card.faceval }}♣--</p>
+            {% else %}
+                <p style="float:left;">{{ card.faceval }}?--</p>
+            {% endif %}
+        {% endfor %}
+        <br>
+    </div>
+{% endfor %}
+
+<h2>Remaining in deck:</h2>
+{% for card in deck %}
+    {% if card.suit == 'spades' %}
+        <p style="float:left;">{{ card.faceval }}♠--</p>
+    {% elif card.suit == 'hearts' %}
+        <p style="float:left; color:red;">{{ card.faceval }}♥--</p>
+    {% elif card.suit == 'diamonds' %}
+        <p style="float:left; color: red;">{{ card.faceval }}♦--</p>
+    {% elif card.suit == 'clubs' %}
+        <p style="float:left;">{{ card.faceval }}♣--</p>
+    {% else %}
+        <p style="float:left;">{{ card.faceval }}?--</p>
+    {% endif %}
+{% endfor %}
+
+{% endblock %}

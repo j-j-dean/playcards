@@ -1,0 +1,75 @@
+{% extends "main/templates/joinlayout.html" %}
+
+{% block content %}
+
+<h2 class="text-center skip-2-below">Create a new Blitz game!</h2>
+
+<div id="all-hearts-small">
+    <div id="rotate_1" >
+        <div class="card suithearts">
+            <p class="card_value">A</p>
+        </div>
+    </div>
+    <div id="rotate_2">
+        <div class="card suithearts">
+            <p class="card_value">K</p>
+        </div>
+    </div>
+    <div id="rotate_3">
+        <div class="card suithearts">
+            <p class="card_value">Q</p>
+        </div>
+    </div>
+    <div id="rotate_4">
+        <div class="card suithearts">
+            <p class="card_value">J</p>
+        </div>
+    </div>
+    <div id="rotate_5">
+        <div class="card suithearts">
+            <p class="card_value">10</p>
+        </div>
+    </div>
+</div>
+
+<form action="/create/" method="post">
+
+    {% csrf_token %}
+
+    <div class="text-center">
+        <h4>Enter User Name</h4>
+        {{ form.user_name.errors }}
+        {{ form.user_name }}
+    </div>
+
+    <div class="text-center">
+        <h4>Enter game ID:</h4>
+        {{ form.game_id.errors }}
+        {{ form.game_id }}
+    </div>
+
+    <div class="text-center">
+        <h4>Enter number of Jokers</h4>
+        {{ form.number_of_jokers.errors }}
+        {{ form.number_of_jokers }}
+    </div>
+
+    <div class="text-center">
+        <h4>Enter number of Decks</h4>
+        {{ form.number_of_decks.errors }}
+        <div id="radio-div">
+        {% for radio in form.number_of_decks %}
+            <div class="myradio">
+                {{ radio }}
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
+    <br style="clear:both;">
+    <br>
+
+    <input type="submit" value="Submit" class="text-center">
+</form>
+
+{% endblock %}

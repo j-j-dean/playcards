@@ -1,0 +1,60 @@
+{% extends "main/templates/joinlayout.html" %}
+
+{% block content %}
+
+<br>
+
+<h2 class="text-center">Ready to Join a Blitz game?</h2>
+
+<div id="all-hearts-small">
+    <div id="rotate_1" >
+        <div class="card suithearts">
+            <p class="card_value">A</p>
+        </div>
+    </div>
+    <div id="rotate_2">
+        <div class="card suithearts">
+            <p class="card_value">K</p>
+        </div>
+    </div>
+    <div id="rotate_3">
+        <div class="card suithearts">
+            <p class="card_value">Q</p>
+        </div>
+    </div>
+    <div id="rotate_4">
+        <div class="card suithearts">
+            <p class="card_value">J</p>
+        </div>
+    </div>
+    <div id="rotate_5">
+        <div class="card suithearts">
+            <p class="card_value">10</p>
+        </div>
+    </div>
+</div>
+
+<form action="/join/" method="post">
+
+    {% csrf_token %}
+
+    <div class="text-center">
+        <h4>Enter User Name:</h4>
+        {{ form.user_name.errors }}
+        {{ form.user_name }}
+    </div>
+
+    <div class="text-center">
+        <h4>Enter game ID:</h4>
+        {{ form.game_id.errors }}
+        {{ form.game_id }}
+    </div>
+
+    <br>
+    <br>
+
+    <input type="submit" value="Submit">
+
+</form>
+
+{% endblock %}

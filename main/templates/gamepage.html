@@ -1,0 +1,87 @@
+{% extends "main/templates/gamelayout.html" %}
+
+{% block content %}
+
+    <div id="the_deck" hidden>
+        {{ card_deck }}
+    </div>
+
+    <div class="col s12, m8, l8">
+        <h3 style="margin:0;">Your hand</h3>
+        <div id="your_hand">
+            {% for card in user_cards %}
+                <div class="players_card suit{{ card.suit }}" style="float:left;">
+                    <p class="card_value">{{ card.faceval }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div id="player_menu" class="col s12 m2 l2">
+        <ul class="collapsible" style="background: white;">
+            <li>
+                <div id="wild_card" class="collapsible-header">
+                    Wild Card
+                    {{ wild_card }}
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header teal lighten-2">Active Player</div>
+            </li>
+            {% for player in players_and_counts %}
+                {% if player.name ==  active_player %}
+                     <li class="active players_list">
+                         <div class="collapsible-header teal lighten-2">
+                             <h4 class="player_card_count">+{{ player.card_count }}</h4>
+                             <p class="active_player player_name">{{ player.name }}</p>
+                         </div>
+                    </li>
+                {% else %}
+                     <li class="players_list">
+                        <div class="collapsible-header">
+                            <h4 class="player_card_count">+{{ player.card_count }}</h4>
+                            <p class="player_name">{{ player.name }}</p>
+                        </div>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="col s12, m8, l8">
+        <h3 style="margin:0;">Draw/Discard Pile</h3>
+    </div>
+    <div id="draw_discard_area" class="col s12, m8, l8">
+        <div class="draw_pile_card" style="float: left;">
+            <!-- Back of card image added in JavaScript -->
+        </div>
+        {% for card in discards %}
+            <div class="discard_pile_card suit{{ card.suit }}" style="float:left;">
+                <p class="card_value">{{ card.faceval }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="col s12, m8, l8">
+        <h3 style="margin:0;">Game Board</h3>
+    </div>
+    <div id="game-board" class="col s12, m8, l8">
+        {% for item in game_board_items %}
+            <div class="game_board_meld_div">
+                <h4 class="game_board_meld_type">{{ item.type }}</h4>
+                {% for meld_card in item.meld_cards %}
+                    <div class="suit{{ meld_card.suit }} meld_card game_board_card" player={{ meld_card.player }} style="float: left;">
+                        <p class="card_value" card_value={{ meld_card.faceval }}>
+                            {{ meld_card.faceval }}
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <!-- game board created in JavaScript -->
+    </div>
+</div>
+
+<div id="result"></div>
+
+{% endblock %}
